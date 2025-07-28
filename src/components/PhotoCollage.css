@@ -1,0 +1,15 @@
+/* src/components/PhotoCollage.css */
+.photo-collage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 40px 0;
+}
+.photo-collage-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

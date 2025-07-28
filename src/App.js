@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from "./components/Home";
+import Birthday from "./components/Birthday";
+import Memories from "./components/Memories";
+import Proposal from "./components/Proposal";
+import CelebrationContextProvider from "./components/CelebrationContext";
+import ThemeContainer from "./components/ThemeContainer";
+import MusicCenter from "./components/MusicCenter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CelebrationContextProvider>
+    <Router>
+      <MusicCenter>
+        <Routes>
+          <Route path="/" element={<ThemeContainer />}>
+            <Route index element={<Home />} />
+            <Route path="birthday" element={<Birthday />} />
+            <Route path="proposal" element={<Proposal />} />
+            <Route path="memories" element={<Memories />} />
+          </Route>
+        </Routes>
+      </MusicCenter>
+    </Router>
+    </CelebrationContextProvider>
   );
 }
 

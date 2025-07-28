@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', cursive;
+  background-color: #fff0f5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  background-color: #ffc0cb;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+.nav-link {
+  color: #d63384;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.heading {
+  font-size: 32px;
+  color: #e91e63;
+  font-weight: bold;
+}
+
+.subheading {
+  font-size: 28px;
+  color: #d63384;
+}
+
+.text {
+  font-size: 18px;
+  color: #555;
+  margin-top: 15px;
+}
+
+.proposal-title {
+  font-size: 30px;
+  color: #c2185b;
+  margin-bottom: 30px;
+}
+
+.yes-button {
+  background-color: #e91e63;
   color: white;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 300px;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.heart-icon {
+  margin-top: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* 💡 Responsive Design */
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 24px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .subheading {
+    font-size: 22px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .yes-button {
+    font-size: 16px;
+    width: 90%;
+  }
+
+  .nav-link {
+    font-size: 16px;
   }
 }

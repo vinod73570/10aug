@@ -1,0 +1,124 @@
+/* src/components/HeroSection.css */
+
+.hero-section {
+  width: 100%;
+  height: 100vh;
+  background: url("../../public/bday-hero.jpg") center/cover no-repeat;
+  background-color: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark romantic glowing overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.85),
+    rgba(255, 20, 147, 0.15)
+  );
+  backdrop-filter: blur(6px);
+  z-index: 0;
+}
+
+/* 🎇 Particle sparkle background */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 3px 3px;
+  animation: sparkleGrid 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+}
+
+@keyframes sparkleGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+/* Hero content box */
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 20px;
+  z-index: 2;
+  animation: fadeInUp 1.2s ease-out both;
+}
+
+/* Hacker-style glowing heading */
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4rem;
+  color: #ff007f;
+  text-shadow:
+    0 0 5px #ff007f,
+    0 0 15px #ff0055,
+    0 0 25px #ff0033;
+  animation: neonPulse 2.5s infinite ease-in-out;
+}
+
+/* Glowing pulse effect */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #ff007f,
+      0 0 15px #ff0055,
+      0 0 25px #ff0033;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #ff66a3,
+      0 0 30px #ff3399,
+      0 0 50px #ff0066;
+  }
+}
+
+/* Subtitle with heart pulse */
+.hero-subtitle {
+  font-size: 1.6rem;
+  margin-top: 14px;
+  color: #ffe4ec;
+  text-shadow: 0 0 8px rgba(255, 20, 147, 0.3);
+  animation: heartbeat 2s infinite;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Enter animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}

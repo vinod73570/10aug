@@ -1,0 +1,449 @@
+.carousel-scene {
+  width: 500px;
+  height: 350px;
+  margin: 40px auto;
+  perspective: 1000px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  cursor: grab;
+}
+
+.carousel:active {
+  cursor: grabbing;
+  transition: none;
+}
+
+.carousel__cell {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: calc(50% - 150px);
+  top: calc(50% - 150px);
+  backface-visibility: hidden;
+}
+.carousel__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* ✅ Crops the image to fill the box */
+  background: none;        /* ✅ No white background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Optional auto‑rotate pause on hover */
+.carousel-scene:hover .carousel {
+  animation-play-state: paused;
+}
+/* 🌟 Glowing animated orbs in the background */
+.carousel-scene::before,
+.carousel-scene::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.2), transparent 70%);
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.carousel-scene::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.15), transparent 70%);
+  animation-delay: 3s;
+}
+
+/* ✨ Subtle pulse animation */
+@keyframes pulseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* 🟣 Sparkle dots floating behind */
+.carousel-scene {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,192,203,0.3) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(255,192,203,0.2) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255,182,193,0.4) 2px, transparent 2px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  position: relative;
+  overflow: visible;
+}
+.carousel-scene {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  margin: 40px auto;
+  perspective: 1000px;
+  overflow: visible;
+}
+
+/* Glow orb base style */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+/* First orb—big pink soft glow in top-left */
+.orb1 {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+  background: radial-gradient(circle, rgba(255,182,193,0.4) 0%, transparent 60%);
+}
+
+/* Second orb—smaller purple glow in bottom-right */
+.orb2 {
+  width: 200px;
+  height: 200px;
+  bottom: -30px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 60%);
+  animation-delay: 2s;
+}
+
+/* Pulsing effect */
+@keyframes glowPulse {
+  from {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Your existing carousel styles below… */
+.carousel {
+  /* … */
+  z-index: 2; /* ensure it's above orbs */
+}
+
+/* etc. */
+/* ── Carousel Scene ── */
+.carousel-scene {
+  position: relative;      /* allow pseudo‑elements */
+  width: 500px;
+  height: 350px;
+  margin: 40px auto;
+  perspective: 1000px;
+  overflow: visible;       /* show glows outside bounds */
+}
+
+/* ── Glow Circles (behind the carousel) ── */
+.carousel-scene::before,
+.carousel-scene::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+  z-index:  -1;            /* sit behind the carousel */
+}
+
+/* Big soft pink glow */
+.carousel-scene::before {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -40%) scale(1);
+  background: radial-gradient(circle, rgba(255,182,193,0.3) 0%, transparent 70%);
+}
+
+/* Smaller hot‑pink glow, offset */
+.carousel-scene::after {
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(20%, 20%) scale(1);
+  background: radial-gradient(circle, rgba(255,105,180,0.25) 0%, transparent 70%);
+  animation-delay: 3s;
+}
+
+/* Glow pulse animation */
+@keyframes pulseGlow {
+  from {
+    transform: translate(var(--tx), var(--ty)) scale(0.95);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate(var(--tx), var(--ty)) scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* ── Your Existing Carousel Styles ── */
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  cursor: grab;
+  z-index: 1;  /* above glows */
+}
+
+.carousel:active {
+  cursor: grabbing;
+  transition: none;
+}
+
+.carousel__cell {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: calc(50% - 150px);
+  top: calc(50% - 150px);
+  backface-visibility: hidden;
+  z-index: 2;  /* above the carousel container */
+}
+
+.carousel__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  background: none;       
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Pause auto‑rotate on hover */
+.carousel-scene:hover .carousel {
+  animation-play-state: paused;
+}
+/* ── More Glow Orbs ── */
+.orb3 {
+  width: 350px;
+  height: 350px;
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(255,230,230,0.25) 0%, transparent 70%);
+  animation-duration: 5s;
+}
+
+.orb4 {
+  width: 450px;
+  height: 450px;
+  bottom: -150px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(255,192,203,0.15) 0%, transparent 80%);
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+
+/* ── Tiny drifting sparkles ── */
+/* ── Romantic Heart & Glow Background ── */
+.carousel-scene {
+  position: relative;
+  overflow: visible;
+   background: none !important;
+  width: 500px;
+  height: 350px;
+  margin: 40px auto;
+  perspective: 1000px;
+  background: linear-gradient(135deg, #ffe4e8, #fff0f5);
+}
+
+/* Rotating soft‑pink radial glow */
+.carousel-scene::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 900px; height: 900px;            /* large enough to cover */
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: radial-gradient(circle at center,
+    rgba(255,105,180,0.15) 0%,
+    rgba(255,182,193,0.05) 60%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  animation: rotateGlow 60s linear infinite;
+}
+
+@keyframes rotateGlow {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Subtle giant heart watermark */
+.carousel-scene::after {
+  content: "💖";
+  position: absolute;
+  top: 50%; left: 50%;
+  font-size: 500px;
+  line-height: 0.8;
+  opacity: 0.08;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure carousel sits on top */
+.carousel {
+  position: relative;
+  z-index: 1;
+  /* … your existing carousel rules … */
+}
+
+@keyframes driftSparkles {
+  0%   { background-position:   0%   0%; }
+  100% { background-position: 100% 100%; }
+}
+/* ── Scene Container ── */
+.carousel-scene {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  margin: 40px auto;
+  perspective: 1200px;
+  overflow: visible;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  isolation: isolate;
+  /* if you don’t want the dark vignette, comment out the next line */
+  /* box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7); */
+}
+
+/* ── Carousel Base ── */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  cursor: grab;
+  z-index: 1;
+  /* make sure no shadow remains here */
+  box-shadow: none !important;
+}
+
+/* ── Cells ── */
+.carousel__cell {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: calc(50% - 150px);
+  top:  calc(50% - 150px);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  /* REMOVE the drop-shadow so no dark box shows */
+  filter: none !important;
+}
+
+/* ── Image Styling ── */
+/* ── Default: no border ── */
+.carousel__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+  /* REMOVE any default border */
+  border: none;
+
+  /* smooth transitions */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border 0.3s ease;
+}
+
+/* ── Hover: add border + glow ── */
+.carousel__cell:hover img {
+  transform: scale(1.05);
+
+  /* bright neon glow */
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,255,255,0.4);
+
+  /* animated border only on hover */
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+
+.carousel__cell img:hover {
+  transform: scale(1.05);
+   z-index: 100;
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,255,255,0.4);
+    
+}
+
+/* ── Pause on Hover ── */
+.carousel-scene:hover .carousel {
+  animation-play-state: paused;
+}
+
+/* ── Glow orbs and other styles remain unchanged below... ── */
+.carousel__cell {
+  filter: none !important;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, z-index 0s;
+  z-index: 1; /* base stacking */
+}
+
+/* On hover: scale up and bring to front */
+.carousel__cell:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+.carousel__cell:hover {
+  /* Bring the entire panel above its siblings */
+  z-index: 10;
+}
+
+.carousel__cell:hover img {
+  /* Pop out and shift to neon glow */
+  transform: scale(1.05);
+
+  /* Replace default shadow with a bright glow */
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,255,255,0.4);
+
+  /* Fade in a white border */
+  border-color: rgba(255,255,255,0.6);
+  z-index: 100; /* ensure it’s above other cells */
+}
+
+.carousel:hover .carousel__cell:not(:hover) {
+  filter: saturate(0.7) brightness(0.9);
+  transform: scale(0.95);
+}.carousel__cell:hover img {
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 0 30px rgba(255, 105, 180, 0.8),
+    0 0 60px rgba(0, 200, 255, 0.6);
+}

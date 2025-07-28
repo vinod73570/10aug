@@ -1,0 +1,93 @@
+.memories-container {
+  padding: 60px 20px;
+  text-align: center;
+  height: 254vh;
+  
+}
+.memories-heading {
+  font-size: 32px;
+  color: var(--text-day);
+  margin-bottom: 20px;
+}
+.memories-intro {
+  font-size: 18px;
+  color: var(--text-day);
+  margin-bottom: 40px;
+}
+.memories-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.memory-card {
+  background: rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.memory-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.memory-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-day);
+}
+@media (max-width: 600px) {
+  .memories-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.video-player-wrapper {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.memories-subheading {
+  font-size: 1.5rem;
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+.memories-note {
+  max-width: 700px;
+  margin: 50px auto 80px;
+  padding: 28px 32px;
+  background: rgba(255, 240, 245, 0.7);
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(255, 105, 180, 0.2);
+  border: 1.5px solid #ffb6c1;
+  backdrop-filter: blur(10px);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeInNote 0.8s ease-in-out;
+}
+
+.memories-note h3 {
+  font-size: 26px;
+  color: #d81b60;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
+  text-shadow: 0 1px 2px rgba(255, 105, 180, 0.3);
+}
+
+.memories-note p {
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+@keyframes fadeInNote {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
