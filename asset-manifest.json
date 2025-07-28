@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dd9d5d36.css",
+    "main.js": "/static/js/main.6353ddb1.js",
+    "static/js/453.db05f481.chunk.js": "/static/js/453.db05f481.chunk.js",
+    "static/media/bday-hero.jpg": "/static/media/bday-hero.7af26f2ea9aca3f2568a.jpg",
+    "static/media/home.jpg": "/static/media/home.e6e67ecdf33ee5adfd20.jpg",
+    "index.html": "/index.html",
+    "main.dd9d5d36.css.map": "/static/css/main.dd9d5d36.css.map",
+    "main.6353ddb1.js.map": "/static/js/main.6353ddb1.js.map",
+    "453.db05f481.chunk.js.map": "/static/js/453.db05f481.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd9d5d36.css",
+    "static/js/main.6353ddb1.js"
+  ]
+}
