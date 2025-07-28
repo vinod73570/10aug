@@ -1,6 +1,6 @@
 // src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // ❌ No BrowserRouter here!
 
 import Home from "./components/Home";
 import Birthday from "./components/Birthday";
@@ -13,7 +13,6 @@ import MusicCenter from "./components/MusicCenter";
 function App() {
   return (
     <CelebrationContextProvider>
-    <Router>
       <MusicCenter>
         <Routes>
           <Route path="/" element={<ThemeContainer />}>
@@ -24,7 +23,6 @@ function App() {
           </Route>
         </Routes>
       </MusicCenter>
-    </Router>
     </CelebrationContextProvider>
   );
 }
