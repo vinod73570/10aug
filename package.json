@@ -2,6 +2,8 @@
   "name": "my-love-site",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vinod73570.github.io/10aug",
+
   "dependencies": {
     "@react-hook/window-size": "^3.1.1",
     "@testing-library/dom": "^10.4.0",
