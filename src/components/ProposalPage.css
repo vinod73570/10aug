@@ -1,0 +1,127 @@
+.proposal-page {
+  width: 100vw;
+  height: 100vh;
+  background: black; /* fallback */
+  background-image: url('../../public/space-bg.jpg'); /* ✅ correct path for /public */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Optional — if you want to keep CSS star animation too */
+/* .star-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(white 1px, transparent 0);
+  background-size: 2px 2px;
+  animation: driftStars 120s linear infinite;
+  opacity: 0.1;
+  pointer-events: none;
+} */
+
+@keyframes driftStars {
+  0% { background-position: 0 0; }
+  100% { background-position: -1000px 1000px; }
+}
+
+.proposal-canvas {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.celebration-panel {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 0 0 15px #a020f0;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+/* ✅ Responsive Layout for 720x1600 Portrait Screens */
+@media screen and (max-width: 720px) and (max-height: 1600px) {
+  .proposal-page {
+    height: 100vh;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .proposal-canvas {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .celebration-panel {
+    top: 28%;
+    padding: 0 20px;
+    font-size: 1.3rem;
+    text-align: center;
+    text-shadow: 0 0 10px #a020f0;
+  }
+
+  .celebration-panel h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .celebration-panel p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .ring-button {
+    width: 80%;
+    max-width: 300px;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    margin: 12px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
+  }
+
+  .ring-button:hover {
+    transform: scale(1.05);
+  }
+}
+    @media screen and (max-width: 720px) and (max-height: 1600px) {
+  .ring-button {
+    padding: 14px 24px;
+    font-size: 1.1rem;
+    margin: 12px auto;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 280px;
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
+    transition: transform 0.2s ease;
+  }
+
+  .ring-button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media screen and (max-width: 720px) and (max-height: 1600px) {
+  .floating-heart {
+    transform: scale(0.7);
+  }
+}

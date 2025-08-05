@@ -1,0 +1,71 @@
+/* src/components/LoveLetterPopup.css */
+
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.letter-box {
+  position: relative;
+  background: #111;
+  border: 2px solid #0ff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  text-align: center;
+  animation: popIn 0.4s ease-out forwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: transparent;
+  border: none;
+  color: #0ff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.letter-title {
+  margin-bottom: 16px;
+  color: #0ff;
+  font-family: 'Courier New', monospace;
+}
+
+.letter-text {
+  color: #ddd;
+  line-height: 1.5;
+  font-size: 14px;
+}
+  /* ✅ Redmi A2 & small device optimization */
+@media screen and (max-width: 720px) and (max-height: 1600px) {
+  .letter-box {
+    max-width: 90%;
+    padding: 16px 20px;
+  }
+
+  .letter-title {
+    font-size: 1.2rem;
+  }
+
+  .letter-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .close-btn {
+    font-size: 1.6rem;
+    top: 6px;
+    right: 6px;
+  }
+}

@@ -447,3 +447,67 @@
     0 0 30px rgba(255, 105, 180, 0.8),
     0 0 60px rgba(0, 200, 255, 0.6);
 }
+/* ───────────── 📱 Responsive for 720x1600 portrait ───────────── */
+@media (max-width: 720px) and (min-height: 1400px) {
+  .carousel-scene {
+    width: 92vw;
+    height: 300px;
+    margin: 32px auto;
+    perspective: 1000px;
+    margin-left: -16px; /* center it */
+  }
+
+  .carousel__cell {
+    /* width: 220px;
+    height: 220px; */
+    left: calc(50% - 110px);
+    top: calc(50% - 110px);
+  }
+
+  .carousel__cell img {
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .glow-orb {
+    opacity: 0.35;
+    filter: blur(3px);
+  }
+
+  .orb1 {
+    width: 220px;
+    height: 220px;
+    top: -40px;
+    left: -40px;
+  }
+
+  .orb2 {
+    width: 160px;
+    height: 160px;
+    bottom: -20px;
+    right: -20px;
+  }
+
+  .orb3 {
+    width: 250px;
+    height: 250px;
+    top: -100px;
+    right: -60px;
+  }
+
+  .orb4 {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+  }
+
+  .carousel-scene::after {
+    font-size: 360px;
+  }
+
+  .carousel-scene::before {
+    width: 650px;
+    height: 650px;
+  }
+}

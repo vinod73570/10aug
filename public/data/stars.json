@@ -1,0 +1,7 @@
+[
+  { "name": "Sirius",      "ra": 6.7525,  "dec": -16.7161, "mag": -1.46 },
+  { "name": "Canopus",     "ra": 6.3992,  "dec": -52.6957, "mag": -0.74 },
+  { "name": "Arcturus",    "ra": 14.2610, "dec": 19.1824,  "mag": -0.05 },
+  { "name": "Vega",        "ra": 18.6156, "dec": 38.7837,  "mag": 0.03 },
+  { "name": "Capella",     "ra": 5.2782,  "dec": 45.9990,  "mag": 0.08 }
+]

@@ -10,6 +10,7 @@ export default function HeroSection({ name = "Darling" }) {
         <h1 className="hero-title">Happy Birthday, {name}!</h1>
         <p className="hero-subtitle">May your day be as beautiful as you are ✨</p>
       </div>
+      
     </section>
   );
 }

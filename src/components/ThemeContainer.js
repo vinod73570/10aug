@@ -1,10 +1,12 @@
 // src/components/ThemeContainer.js
-import React, { useState, useContext } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./ThemeContainer.css";
 import FireworksOverlay from "./FireworksOverlay";
 import { MusicContext } from "./MusicCenter";
-import BirthdayCake from "./BirthdayCake";
+
+
+// import GlowingBirthdayText from "./GlowingBirthdayText";
 
 
 import RealisticBalloons from "./RealisticBalloons";
@@ -13,6 +15,10 @@ import { CelebrationContext } from "./CelebrationContext"; // ✅ Only import, d
 export default function ThemeContainer() {
   const [theme, setTheme] = useState("day");
   const toggleTheme = () => setTheme((t) => (t === "day" ? "night" : "day"));
+  useEffect(() => {
+  console.log("Window width:", window.innerWidth);
+}, []);
+
 
   // ✅ Access global fireworks state from context
   const { showFireworks, setShowFireworks } = useContext(CelebrationContext);
@@ -33,7 +39,8 @@ export default function ThemeContainer() {
         <Link to="/birthday" className="nav-link">Birthday</Link>
         <Link to="/proposal" className="nav-link">Proposal</Link>
         <Link to="/memories" className="nav-link">Memories</Link>
-        <Link to="/timeline" className="nav-link">View Timeline</Link>
+        <Link to="/gallery" className="nav-link">gallery</Link>
+       
 
         {/* 🎵 Music Buttons */}
         <div className="music-controls">
@@ -49,6 +56,8 @@ export default function ThemeContainer() {
         <button className="theme-toggle" onClick={toggleTheme}>
           {theme === "day" ? "🌙 Night Mode" : "☀️ Day Mode"}
         </button>
+        {/* <GlowingBirthdayText show={showFireworks} /> */}
+
       </nav>
 
       <Outlet />

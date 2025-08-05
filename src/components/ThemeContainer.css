@@ -20,48 +20,41 @@
   min-height: 100vh;
   transition: background 0.5s ease, color 0.5s ease;
   font-family: 'Segoe UI', cursive;
+  overflow-x: hidden; /* avoid side-scroll */
 }
 
 /* ---- Navbar ---- */
 .navbar {
   display: flex;
+  flex-wrap: wrap;             /* allow children to wrap */
   align-items: center;
+  justify-content: center;
   gap: 20px;
   padding: 12px 24px;
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(4px);
 }
 
+/* nav links */
 .nav-link {
   color: inherit;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.nav-link:hover {
+  background: rgba(255,255,255,0.3);
 }
 
-/* ---- Theme Toggle ---- */
-.theme-toggle {
-  margin-left: auto;
-  background: rgba(0,0,0,0.3);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-/* ---- Responsive ---- */
-@media screen and (max-width: 600px) {
-  .nav-link { font-size: 16px; }
-  .theme-toggle { padding: 6px 10px; font-size: 14px; }
-}
+/* music controls */
 .music-controls {
   display: flex;
   gap: 8px;
-  margin-left: 20px;
+  margin-left: auto;
 }
-
 .nav-button {
   background: #ffffff33;
   border: none;
@@ -74,4 +67,67 @@
 }
 .nav-button:hover {
   background: #ffffff55;
+}
+
+/* theme toggle button */
+.theme-toggle {
+  margin-left: auto;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* ---- Mild Mobile Tweak (up to 600px) ---- */
+
+
+@media screen and (max-width: 720px) {
+  /* .navbar {
+    flex-direction: column;  
+    align-items: center;
+     /* gap: 12px; */
+     /* padding: 12px; */
+   /* }  */
+   .navbar{
+    flex-direction: row;
+    
+    gap: 14px;
+    
+   }
+
+   .nav-link {
+    font-size: 18.5px;
+    /* width: 10%; */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+  } 
+
+  .music-controls {
+    justify-content: center;
+
+    margin-left: 0;
+    margin-right: 0;
+    gap: 0px;
+    margin-top: 10px;
+  }
+
+  .nav-button {
+    font-size: 16.3px;
+    padding: 6px 10px;
+  }
+
+  .theme-toggle {
+    /* width: 100%; */
+    text-align: center;
+    font-size: 14px;
+    padding: 8px;
+    margin-top: 10px;
+      margin-left: 0;
+    margin-right: 0;
+  }
 }

@@ -36,7 +36,7 @@ export default function MusicCenter({ children }) {
     audioRef.current.onended = () => {
       setCurrentTrack((prev) => (prev + 1) % playlist.length);
     };
-  }, [currentTrack]);
+  }, [currentTrack, isMuted, isPlaying]);
 
   useEffect(() => {
     isPlaying ? audioRef.current.play().catch(() => {}) : audioRef.current.pause();
@@ -53,6 +53,8 @@ export default function MusicCenter({ children }) {
         togglePlay: () => setIsPlaying((p) => !p),
         nextTrack: () => setCurrentTrack((i) => (i + 1) % playlist.length),
         toggleMute: () => setIsMuted((m) => !m),
+              pauseMusic: () => audioRef.current.pause(),           // ✅ add this
+      playMusic: () => audioRef.current.play().catch(() => {}), // ✅ add this
       }}
     >
       {children}

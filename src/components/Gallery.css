@@ -1,0 +1,190 @@
+/* ────────── Base Layout ────────── */
+.gallery-container {
+  display: flex;
+  min-height: 100vh;
+  background: #0d0d2b;
+  color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 0 0 250px;
+  background: #121232;
+  border-right: 2px solid #1f1f3a;
+  padding: 1.5rem;
+}
+.sidebar h2 {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: #ff85c1;
+}
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.folder-btn {
+  padding: .75rem 1rem;
+  background: #1a1a3d;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .3s;
+}
+.folder-btn:hover,
+.folder-btn.active {
+  background: #ff48c4;
+  color: #0d0d2b;
+}
+
+/* Main area */
+.gallery-main {
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.placeholder-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* Password unlock */
+.password-box {
+  max-width: 300px;
+  margin: 2rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.password-box input {
+  padding: .5rem;
+  border: none;
+  border-radius: 5px;
+}
+.password-box button,
+.back-btn {
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.back-btn {
+  background: transparent;
+  color: #ff85c1;
+  text-align: left;
+}
+.password-box button {
+  background: #ff69b4;
+  color: #fff;
+}
+
+/* Media Grid */
+.media-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.media-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.media-grid img,
+.media-grid video {
+  flex: 1 1 calc(25% - 1rem);
+  max-width: calc(25% - 1rem);
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #fff3;
+  transition: transform .3s, box-shadow .3s;
+}
+.media-grid img:hover,
+.media-grid video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #ff69b4;
+}
+
+/* ────────── Mobile / Tall Portrait (≤720px) ────────── */
+@media (max-width: 720px) {
+  .gallery-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    flex: none;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 2px solid #1f1f3a;
+  }
+  .folder-list {
+    flex-direction: row;
+    gap: .5rem;
+  }
+  .folder-btn {
+    flex: 0 0 auto;
+    padding: .5rem .75rem;
+    font-size: .9rem;
+  }
+  .gallery-main {
+    padding: 1rem;
+  }
+  .media-grid img,
+  .media-grid video {
+    flex: 1 1 48%;
+    max-width: 48%;
+  }
+  /* Single-col override (uncomment if desired) */
+  /* .media-grid img,
+     .media-grid video {
+       flex-basis: 90%;
+       max-width: 90%;
+     } */
+}
+/* ─── Fix folder buttons on mobile ─── */
+@media (max-width: 720px) {
+  /* ...existing rules... */
+
+  /* Sidebar stays full width, but only folder-list scrolls */
+  .sidebar {
+    padding: 1rem 0.5rem;
+    display: block;               /* remove flex */
+    overflow: hidden;             /* hide any overflow from sidebar */
+  }
+
+  .folder-list {
+    display: flex;
+    overflow-x: auto;             /* allow horizontal scroll here */
+    gap: 0.5rem;
+    padding: 0 0.5rem;            /* small side padding */
+    -webkit-overflow-scrolling: touch;
+  }
+  .folder-list::-webkit-scrollbar { display: none; }
+
+  .folder-btn {
+    flex: 0 0 auto;
+    margin: 0;                    /* remove bottom margin */
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    white-space: nowrap;          /* prevent wrapping */
+    background: #1a1a3d;
+    color: #fff;
+  }
+  .folder-btn.active {
+    background: #ff48c4;
+    color: #121232;               /* darker text for contrast */
+  }
+
+  /* rest of your mobile rules… */
+}

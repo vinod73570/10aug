@@ -1,15 +1,17 @@
-// src/components/CountdownTimer.js
 import React, { useEffect, useState, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Step 1: import this
 import { CelebrationContext } from "./CelebrationContext";
-import { MusicContext } from "./MusicCenter"; // ✅ import MusicContext
+import { MusicContext } from "./MusicCenter";
 import "./CountdownTimer.css";
 
 const CountdownTimer = () => {
-  // const targetDateRef = useRef(new Date("2025-08-10T00:00:00")); // 🎂 Set your real date
-  const targetDateRef = useRef(new Date(Date.now() + 1000)); 
+  const navigate = useNavigate(); // ✅ Step 2
+
+  // const targetDateRef = useRef(new Date("2025-08-10T00:00:00"));
+  const targetDateRef = useRef(new Date(Date.now() + 1000)); // ⏱️ For testing
 
   const { setShowFireworks } = useContext(CelebrationContext);
-  const { playBirthdayNow } = useContext(MusicContext); // ✅ Use inside component
+  const { playBirthdayNow } = useContext(MusicContext);
 
   const [now, setNow] = useState(new Date());
   const [isBirthday, setIsBirthday] = useState(false);
@@ -23,14 +25,16 @@ const CountdownTimer = () => {
 
   const diff = targetDateRef.current.getTime() - now.getTime();
 
-useEffect(() => {
-  if (diff <= 0 && !isBirthday) {
-    setIsBirthday(true);
-    setShowFireworks(true); // 🔥 this triggers fireworks
-    playBirthdayNow?.();    // optional: plays birthday sound
-  }
-}, [diff, isBirthday, setShowFireworks, playBirthdayNow]);
+  useEffect(() => {
+    if (diff <= 0 && !isBirthday) {
+      setIsBirthday(true);
+      setShowFireworks(true);
+      playBirthdayNow?.();
 
+      // ✅ Step 3: Navigate to splash page
+      navigate("/splash");
+    }
+  }, [diff, isBirthday, setShowFireworks, playBirthdayNow, navigate]);
 
   const getTime = (ms) => {
     const total = Math.max(ms, 0);

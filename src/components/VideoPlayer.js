@@ -1,8 +1,10 @@
+// src/components/VideoPlayer.js
 import React, { useState, useContext } from "react";
 import "./VideoPlayer.css";
 import { MusicContext } from "./MusicCenter";
 
-const videos = [
+// Rename this so it doesn’t shadow the prop
+const defaultVideos = [
   {
     id: 1,
     title: "First Date 🌸",
@@ -30,8 +32,8 @@ const videos = [
   },
 ];
 
-export default function VideoPlayer() {
-  const [activeIdx, setActiveIdx] = useState(null);
+export default function VideoPlayer({ videos = defaultVideos, compact = false }) {
+  const [activeIdx, setActiveIdx] = useState(compact ? 0 : null);
   const { pauseMusic, playMusic } = useContext(MusicContext);
 
   const handleClose = () => {
@@ -43,10 +45,10 @@ export default function VideoPlayer() {
     <div className="vp-wrapper">
       <h2 className="vp-heading">📺 Video Memories</h2>
 
-      {activeIdx !== null && (
+      {activeIdx !== null && videos[activeIdx] && (
         <div className="vp-player">
           <button className="vp-close" onClick={handleClose}>
-            ❌ Close
+            ❌
           </button>
 
           <video
@@ -76,7 +78,7 @@ export default function VideoPlayer() {
             className="vp-card"
             onClick={() => {
               setActiveIdx(idx);
-              pauseMusic(); // just in case
+              pauseMusic();
             }}
           >
             <img src={v.thumb} alt={v.title} className="vp-thumb" />

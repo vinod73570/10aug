@@ -2,46 +2,47 @@
   padding: 60px 20px;
   text-align: center;
   height: 254vh;
-  
+  box-sizing: border-box;
 }
+
 .memories-heading {
   font-size: 32px;
   color: var(--text-day);
   margin-bottom: 20px;
 }
+
 .memories-intro {
   font-size: 18px;
   color: var(--text-day);
   margin-bottom: 40px;
 }
+
 .memories-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
+
 .memory-card {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   padding: 10px;
   width: 200px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .memory-card img {
   width: 100%;
   border-radius: 8px;
 }
+
 .memory-card p {
   margin-top: 8px;
   font-size: 14px;
   color: var(--text-day);
 }
-@media (max-width: 600px) {
-  .memories-gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+
 .video-player-wrapper {
   margin-top: 40px;
   text-align: center;
@@ -52,6 +53,7 @@
   color: #e91e63;
   margin-bottom: 10px;
 }
+
 .memories-note {
   max-width: 700px;
   margin: 50px auto 80px;
@@ -89,5 +91,48 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ───────────── 📱 Mobile Portrait 720×1600 Responsive Fix ───────────── */
+@media (max-width: 720px) and (min-height: 1400px) {
+  .memories-container {
+    padding: 40px 16px;
+    height: auto;
+  }
+
+  .memories-heading {
+    font-size: 1.75rem;
+  }
+
+  .memories-intro {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .memory-card {
+    width: 90%;
+    max-width: 280px;
+  }
+
+  .memory-card p {
+    font-size: 0.85rem;
+  }
+
+  .memories-note {
+    padding: 20px 18px;
+    margin: 30px auto 60px;
+  }
+
+  .memories-note h3 {
+    font-size: 1.5rem;
+  }
+
+  .memories-note p {
+    font-size: 0.95rem;
+  }
+
+  .video-player-wrapper {
+    margin-top: 30px;
   }
 }

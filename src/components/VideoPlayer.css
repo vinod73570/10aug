@@ -326,3 +326,118 @@
   margin-top: 20px;
   padding: 0 8px;
 }
+/* ────────── Portrait Mobile (≤720×… screens) ────────── */
+@media (max-width: 720px) and (min-height: 1400px) {
+  /* Container padding */
+  .memories-container .vp-wrapper {
+    padding: 30px 16px 50px;
+  }
+
+  /* Heading smaller */
+  .memories-container .vp-heading {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+  .memories-container .vp-heading::after {
+    font-size: 26px;
+    top: -12px;
+    right: -28px;
+  }
+
+  /* Player box full-width + shorter */
+  .memories-container .vp-player {
+    max-width: 95%;
+    padding: 20px;
+  }
+  .memories-container .vp-video {
+    height: 180px;
+  }
+  .memories-container .vp-close {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    top: 12px;
+    right: 12px;
+  }
+
+  /* Text scaling */
+  .memories-container .vp-title {
+    font-size: 1.75rem;
+  }
+  .memories-container .vp-date {
+    font-size: 13px;
+  }
+  .memories-container .vp-desc {
+    font-size: 14px;
+  }
+
+  /* Grid → single column */
+  .memories-container .vp-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 8px;
+    margin-top: 20px;
+  }
+  .memories-container .vp-card {
+    padding-top: 60%; /* taller aspect */
+  }
+  .memories-container .vp-card:hover {
+    transform: rotateY(4deg) rotateX(2deg) translateY(-4px) scale(1.02);
+  }
+  .memories-container .vp-card:hover .vp-thumb {
+    transform: scale(1.04) translateZ(20px);
+  }
+
+  /* Info overlay smaller */
+  .memories-container .vp-info {
+    padding: 10px 12px;
+  }
+  .memories-container .vp-card-title {
+    font-size: 16px;
+  }
+  .memories-container .vp-card-date {
+    font-size: 11px;
+  }
+} /* <-- This closing brace is required! */
+.memories-container .vp-wrapper::before,
+.memories-container .vp-wrapper::after {
+  /* keep your existing positioning & sizing… */
+  content: "";
+  position: absolute;
+  /* … */
+  
+  /* ADD THIS: let clicks pass through */
+  pointer-events: none;
+}
+.memories-container .vp-wrapper {
+  position: relative;
+  /* … */
+}
+
+.memories-container .vp-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* … your other styles … */
+  z-index: -2;
+
+  /* <<< prevent it from catching clicks */
+  pointer-events: none;
+}
+
+.memories-container .vp-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  /* … your other styles … */
+  z-index: -1;
+
+  /* <<< prevent it from catching clicks */
+  pointer-events: none;
+}
