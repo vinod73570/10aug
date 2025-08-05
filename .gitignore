@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# don’t track local build artifacts or caches
+/build/
+/node_modules/
+/node_modules/.cache/
+/.gh-pages/
