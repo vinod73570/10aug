@@ -2,8 +2,13 @@
 import React, { useEffect, useState } from "react";
 import "./RealisticBalloons.css";
 
+// Multiple balloon colors for variety
 const balloonImages = [
-  "/balloon.png"
+  "/balloon-red.png",
+  "/balloon-blue.png",
+  "/balloon-green.png",
+  "/balloon-yellow.png",
+  "/balloon-pink.png",
 ];
 
 let balloonId = 0;
@@ -22,18 +27,20 @@ export default function RealisticBalloons({ show = false }) {
         id: balloonId++,
         left: Math.random() * 90 + 5, // random horizontal position
         img: balloonImages[Math.floor(Math.random() * balloonImages.length)],
-        size: Math.random() * 20 + 40, // width between 40-60px
-        delay: Math.random() * 2, // random animation delay
+        size: Math.random() * 30 + 40, // width between 40-70px
+        delay: Math.random() * 2, // animation delay
+        duration: Math.random() * 5 + 8, // float speed between 8-13s
+        rotate: Math.random() * 360, // random start rotation
       };
       setBalloons((prev) => [...prev, newBalloon]);
 
-      // Remove after 12s (balloon float duration)
+      // Remove after float duration
       setTimeout(() => {
         setBalloons((prev) => prev.filter((b) => b.id !== newBalloon.id));
-      }, 12000);
+      }, (newBalloon.duration + 1) * 1000);
     };
 
-    const interval = setInterval(spawnBalloon, 400); // One balloon every 0.4s
+    const interval = setInterval(spawnBalloon, 400); // every 0.4s
     return () => clearInterval(interval);
   }, [show]);
 
@@ -48,6 +55,8 @@ export default function RealisticBalloons({ show = false }) {
             left: `${balloon.left}%`,
             width: `${balloon.size}px`,
             animationDelay: `${balloon.delay}s`,
+            animationDuration: `${balloon.duration}s`,
+            transform: `rotate(${balloon.rotate}deg)`,
           }}
           alt="balloon"
         />

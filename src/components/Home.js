@@ -57,7 +57,7 @@ function Home() {
 
       <section className="middle">
         <div className="photo">
-          <img src="homeleftphoto.jpg" alt="My Love" className="home-photo" />
+          <img src="../../public/homeleftphoto.jpg" alt="My Love" className="home-photo" />
         </div>
 
         <div className="message-box">

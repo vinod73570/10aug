@@ -1,62 +1,50 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Points } from '@react-three/drei';
-import { BufferGeometry, Float32BufferAttribute } from 'three';
+// src/components/RealStarField.js
+import React, { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import { useFrame } from '@react-three/fiber';
 
-export default function RealStarField({ radius = 20 }) {
-  const [stars, setStars] = useState([]);
+export default function RealStarField({ radius = 20, count = 600 }) {
+  const meshRef = useRef();
+  const dummy = new THREE.Object3D();
 
-  // 1. Fetch JSON once on mount
-  useEffect(() => {
-    fetch('/data/stars.json')
-      .then(res => {
-        console.log('stars.json status', res.status);
-        return res.json();
-      })
-      .then(data => {
-        console.log('loaded stars count:', data.length);
-        setStars(data);
-      })
-      .catch(err => console.error('Failed to load stars.json', err));
-  }, []);
-
-  // 2. Build positions array when stars arrive
-  const positions = useMemo(() => {
-    if (!stars.length) return null;
-    const pts = [];
-    stars.forEach(({ ra, dec }) => {
-      // RA hours → radians (24h → 2π), Dec degrees → radians
-      const raRad  = ra  * Math.PI / 12;
-      const decRad = dec * Math.PI / 180;
-      // Spherical → Cartesian
-      const x = radius * Math.cos(decRad) * Math.cos(raRad);
-      const y = radius * Math.sin(decRad);
-      const z = radius * Math.cos(decRad) * Math.sin(raRad);
-      pts.push(x, y, z);
+  // create per-instance data once
+  const positions = React.useMemo(() => {
+    return Array.from({ length: count }).map(() => {
+      return [
+        (Math.random() * 2 - 1) * radius,
+        (Math.random() * 2 - 1) * radius,
+        -Math.random() * radius - 0.5,
+      ];
     });
-    console.log('positions array length:', pts.length);
-    return new Float32Array(pts);
-  }, [stars, radius]);
+  }, [count, radius]);
 
-  // 3. Create BufferGeometry
-  const geom = useMemo(() => {
-    if (!positions) return null;
-    const g = new BufferGeometry();
-    g.setAttribute('position', new Float32BufferAttribute(positions, 3));
-    return g;
+  useEffect(() => {
+    if (!meshRef.current) return;
+    for (let i = 0; i < positions.length; i++) {
+      const pos = positions[i];
+      dummy.position.set(pos[0], pos[1], pos[2]);
+      const s = Math.random() * 0.02 + 0.005;
+      dummy.scale.set(s, s, s);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true;
   }, [positions]);
 
-  // 4. Render as Points
-  if (!geom) return null;
+  // subtle twinkle by adjusting emissive color a little
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    const t = clock.elapsedTime;
+    const col = new THREE.Color(0xffffff);
+    col.offsetHSL(0, 0, Math.sin(t * 0.3) * 0.02);
+    // apply same color to material (cheap)
+    meshRef.current.material.color.copy(col);
+  });
+
   return (
-    <Points geometry={geom}>
-      <pointsMaterial
-        attach="material"
-        size={2}
-        color="#ffffff"
-        sizeAttenuation
-        transparent
-        opacity={0.9}
-      />
-    </Points>
+    <instancedMesh ref={meshRef} args={[null, null, positions.length]}>
+      <sphereGeometry args={[1, 6, 6]} />
+      <meshStandardMaterial color="#ffffff" emissive="#ffffff" toneMapped={false} />
+    </instancedMesh>
   );
 }

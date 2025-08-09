@@ -1,16 +1,20 @@
 // src/components/FireworksOverlay.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Fireworks } from "fireworks-js";
 import Confetti from "react-confetti";
 import { useWindowSize } from "@react-hook/window-size";
 import "./FireworksOverlay.css";
+import RealisticBalloons from "./RealisticBalloons";
 
 export default function FireworksOverlay({ show = false }) {
   const containerRef = useRef(null);
   const fireworksRef = useRef(null);
   const [width, height] = useWindowSize();
+  const [active, setActive] = useState(false); // controls confetti & balloons
 
   useEffect(() => {
+    let stopTimer;
+
     if (show && containerRef.current && !fireworksRef.current) {
       fireworksRef.current = new Fireworks(containerRef.current, {
         rocketsPoint: { min: 0, max: 100 },
@@ -41,6 +45,16 @@ export default function FireworksOverlay({ show = false }) {
       });
 
       fireworksRef.current.start();
+      setActive(true); // start balloons & confetti
+
+      // ⏳ Auto-stop after 3 minutes
+      stopTimer = setTimeout(() => {
+        if (fireworksRef.current) {
+          fireworksRef.current.stop();
+          fireworksRef.current = null;
+        }
+        setActive(false); // stop balloons & confetti
+      }, 180000);
     }
 
     return () => {
@@ -48,23 +62,17 @@ export default function FireworksOverlay({ show = false }) {
         fireworksRef.current.stop();
         fireworksRef.current = null;
       }
+      if (stopTimer) clearTimeout(stopTimer);
+      setActive(false);
     };
   }, [show]);
 
   return (
     <>
       <div className="fireworks-container" ref={containerRef} />
-      {show && <Confetti width={width} height={height} />}
-      {show && (
-        <div className="celebration-floating">
-          {[...Array(20)].map((_, i) => (
-            <div key={`b${i}`} className="balloon" />
-          ))}
-          {[...Array(15)].map((_, i) => (
-            <div key={`h${i}`} className="heart" />
-          ))}
-        </div>
-      )}
+      {active && <Confetti width={width} height={height} />}
+     {active && <RealisticBalloons show={active} />}
+
     </>
   );
 }
