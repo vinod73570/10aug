@@ -3,7 +3,7 @@ import photoLinks from './photos.json'; // new photos JSON from Cloudinary
 
 const galleryFolders = [
   {
-    name: "Romantic",
+    name: "photos",
     type: "public",
     media: [
       ...photoLinks.map((url, index) => ({
