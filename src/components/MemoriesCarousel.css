@@ -448,20 +448,21 @@
     0 0 60px rgba(0, 200, 255, 0.6);
 }
 /* ───────────── 📱 Responsive for 720x1600 portrait ───────────── */
-@media (max-width: 720px) and (min-height: 1400px) {
+@m@media (max-width: 720px) and (min-height: 1400px) {
   .carousel-scene {
     width: 92vw;
     height: 300px;
-    margin: 32px auto;
     perspective: 1000px;
-    margin-left: -16px; /* center it */
+    margin-left: auto;
+    margin-right: auto;
+    transform: none !important; /* Prevents container from sliding */
   }
 
   .carousel__cell {
-    /* width: 220px;
-    height: 220px; */
+    position: absolute;
     left: calc(50% - 110px);
     top: calc(50% - 110px);
+    transform-origin: center center -300px; /* Keep rotation centered */
   }
 
   .carousel__cell img {

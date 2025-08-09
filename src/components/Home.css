@@ -170,22 +170,7 @@
   }
 }
 
-/* 📱 Mobile Responsive Photo */
-@media screen and (max-width: 600px) {
-  .photo {
-    width: 180px;
-    height: 180px;
-  }
 
-  .photo::before {
-    font-size: 20px;
-  }
-
-  .home-photo {
-    width: 100%;
-    height: 100%;
-  }
-}
 
 .middle {
   display: flex;
@@ -476,4 +461,139 @@
   .home-container::after {
     background-size: 30px 30px, 50px 50px;
   }
+}
+/* ---------- Photo block - consistent layout & variants ---------- */
+.photo {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 40px auto;           /* center by default */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* image container */
+.home-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #ffffff;              /* white fallback if transparent areas */
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.28);
+  position: relative;
+  animation: heartPulse 2s infinite ease-in-out;
+  transition: transform 0.28s ease, box-shadow 0.25s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* hover/tap feedback */
+.home-photo:hover,
+.photo:active .home-photo {
+  transform: scale(1.04);
+  box-shadow: 0 14px 36px rgba(233,30,99,0.30);
+}
+
+/* floating hearts — smaller and pushed a little below image */
+.photo::before {
+  content: "💖 💕 💗 💘 💝";
+  position: absolute;
+  top: calc(100% + 8px);    /* put just under the photo */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  animation: floatHearts 4s linear infinite;
+  z-index: 1;
+  opacity: 0.75;
+  pointer-events: none;     /* don't block clicks */
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* glow behind photo (variantable) */
+.photo::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(10px);
+  opacity: 0.85;
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+/* Default soft pink glow */
+.photo.bg-soft::after {
+  background: radial-gradient(circle at 50% 40%, rgba(255,192,203,0.32), rgba(255,192,203,0.12) 35%, transparent 70%);
+}
+
+/* Alternative darker glow (use .photo.bg-dark on markup) */
+.photo.bg-dark::after {
+  background: radial-gradient(circle at 50% 40%, rgba(160,32,240,0.22), rgba(160,32,240,0.08) 35%, transparent 70%);
+}
+
+/* If you want a subtle halo instead */
+.photo.bg-halo::after {
+  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.25), rgba(255,255,255,0) 45%);
+}
+
+/* Heartbeat pulse */
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50%     { transform: scale(1.06); }
+}
+
+/* Glow animation */
+@keyframes glowPulse {
+  0%,100% { transform: translate(-50%, -50%) scale(1); opacity: 0.45; }
+  50%     { transform: translate(-50%, -50%) scale(1.12); opacity: 0.75; }
+}
+
+/* floating hearts animation */
+@keyframes floatHearts {
+  0%   { transform: translate(-50%, 0); opacity: 0; top: calc(100% + 0px); }
+  20%  { opacity: 0.9; }
+  100% { transform: translate(-50%, -120%); opacity: 0; top: calc(100% - 120px); }
+}
+
+/* ---------- Mobile adjustments (keep look consistent) ---------- */
+@media screen and (max-width: 720px) {
+  .photo {
+    width: 180px;
+    height: 180px;
+    margin: 18px auto 28px;
+  }
+
+  .home-photo {
+    border-radius: 50%;
+    box-shadow: 0 8px 22px rgba(233,30,99,0.22);
+  }
+
+  .photo::before {
+    font-size: 18px;
+    top: calc(100% + 6px);
+    opacity: 0.65;
+    animation-duration: 4.5s;
+  }
+
+  .photo::after {
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+  }
+}
+
+/* Slight tweak for very small phones */
+@media screen and (max-width: 360px) {
+  .photo { width: 160px; height: 160px; }
+  .photo::before { font-size: 16px; top: calc(100% + 4px); }
 }

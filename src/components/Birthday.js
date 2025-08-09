@@ -7,7 +7,7 @@ import PhotoCollage from "./PhotoCollage";
 export default function Birthday({ onCountdownComplete }) {
   return (
     <div className="birthday-page">
-      <HeroSection name="Her Name" />
+      <HeroSection name="komal 🥰 " />
 
       {/* Pass onComplete handler here */}
       <CountdownTimer

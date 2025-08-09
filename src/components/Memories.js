@@ -5,14 +5,20 @@ import VideoPlayer from "./VideoPlayer";
 
 
 const imageList = [
-  "/3DImage1.jpg",
-  "/3DImage2.jpg",
-  "/3DImage3.jpg",
-  "/3DImage4.jpg",
-  "/3DImage5.jpg",
-  "/3DImage6.jpg",
-  "/3DImage7.jpg",
-  "/3DImage8.jpg"
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage2_yljl5z.jpg",
+   "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage8_rruh7d.jpg",
+    "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage7_vbcjgi.jpg",
+     "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage1_xhival.jpg",
+      "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage4_m0ce36.jpg",
+       "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage6_rnul5c.jpg",
+        "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage5_klyyzk.jpg",
+    "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754714679/3DImage3_lvup36.jpg",
+
+
+
+
+
+
 ];
 
 export default function Memories() {

@@ -69,7 +69,7 @@ export default function ProposalPage() {
     setShowCelebration(true);
     setShowSecretButton(true); // ✅ Show button after click
 
-    setTimeout(() => setShowFireworks(false), 6000);
+    setTimeout(() => setShowFireworks(false), 60000);
   };
 
   return (

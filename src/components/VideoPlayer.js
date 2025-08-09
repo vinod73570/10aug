@@ -7,29 +7,29 @@ import { MusicContext } from "./MusicCenter";
 const defaultVideos = [
   {
     id: 1,
-    title: "First Date 🌸",
+    title: "Our date",
     date: "2021-06-15",
-    src: "/videos/moment1.mp4",
-    thumb: "/videos/thumb1.jpg",
+    src: "https://res.cloudinary.com/dr4ompqm4/video/upload/Ccvt4956_bauz5e.mkv",
+    thumb: "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754729367/3DImage3_lvup36.jpg",
     description:
-      "Our very first dinner at that little Italian place by the river.",
+      "Our one of the best date .",
   },
-  {
-    id: 2,
-    title: "Surprise Montage 🎥",
-    date: "2022-08-10",
-    src: "/videos/moment1.mp4",
-    thumb: "/videos/thumb1.jpg",
-    description: "A sweet birthday surprise for you 💝",
-  },
-  {
-    id: 3,
-    title: "New Year Vlog ✨",
-    date: "2023-01-01",
-    src: "/videos/moment1.mp4",
-    thumb: "/videos/thumb1.jpg",
-    description: "Starting the year with love and laughter!",
-  },
+  // {
+  //   id: 2,
+  //   title: "my birthday ",
+  //   date: "2022-08-10",
+  //   src: "/videos/moment1.mp4",
+  //   thumb: "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754729369/3DImage4_m0ce36.jpg",
+  //   description: "my birthday with you 💝",
+  // },
+  // {
+  //   id: 3,
+  //   title: "New Year Vlog ✨",
+  //   date: "2023-01-01",
+  //   src: "/videos/moment1.mp4",
+  //   thumb: "/videos/thumb1.jpg",
+  //   description: "Starting the year with love and laughter!",
+  // },
 ];
 
 export default function VideoPlayer({ videos = defaultVideos, compact = false }) {

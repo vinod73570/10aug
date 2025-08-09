@@ -43,7 +43,7 @@ export default function ThemeContainer() {
        
 
         {/* 🎵 Music Buttons */}
-        <div className="music-controls">
+        {/* <div className="music-controls">
           <button onClick={togglePlay} className="nav-button">
             {isPlaying ? "⏸️" : "▶️"}
           </button>
@@ -51,7 +51,7 @@ export default function ThemeContainer() {
           <button onClick={toggleMute} className="nav-button">
             {isMuted ? "🔇" : "🔊"}
           </button>
-        </div>
+        </div> */}
 
         <button className="theme-toggle" onClick={toggleTheme}>
           {theme === "day" ? "🌙 Night Mode" : "☀️ Day Mode"}

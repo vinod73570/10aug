@@ -57,7 +57,7 @@ function Home() {
 
       <section className="middle">
         <div className="photo">
-          <img src="../../public/homeleftphoto.jpg" alt="My Love" className="home-photo" />
+          <img src="https://res.cloudinary.com/dr4ompqm4/image/upload/v1754715304/IMG_2775_-_Copy_cotiki.jpg" alt="My Love" className="home-photo" />
         </div>
 
         <div className="message-box">
@@ -66,7 +66,7 @@ function Home() {
         </div>
 
         <div className="photo">
-          <img src="homerightphoto.jpg" alt="My Love" className="home-photo" />
+          <img src="https://res.cloudinary.com/dr4ompqm4/image/upload/v1754715284/IMG_3384_-_Copy_kjlpjr.jpg" alt="My Love" className="home-photo" />
         </div>
       </section>
 
