@@ -45,7 +45,7 @@ export default function BirthdaySplash() {
 </button>
       {/* ✨ Love message appears immediately */}
       <TypewriterMessage
-        text="Every moment with you is magical. Today, let's celebrate the day that brought you into this world. 🎂💖"
+        text="aaj aapke lia mene cake bnaya h iss prr click kroo fir aapka surprice ready h 😘🎂💖"
         speed={40}
       />
 

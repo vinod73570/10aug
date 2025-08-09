@@ -29,7 +29,7 @@ export default function SurpriseModal({ show, onClose }) {
               id: 2,
               title: "Surprise Montage 🎥",
               date: "2022-08-10",
-              src: "https://res.cloudinary.com/dr4ompqm4/video/upload/Bthg1519_osr7hb.mp4",     // Make sure this is your montage file
+              src: "https://res.cloudinary.com/dr4ompqm4/video/upload/v1754758217/IMG_5152_nepece.mp4",     // Make sure this is your montage file
               thumb: "/videos/thumb2.jpg",
               description: "A sweet birthday surprise for you 💝",
             }
@@ -39,7 +39,7 @@ export default function SurpriseModal({ show, onClose }) {
         {/* Voice memo */}
         <audio
           ref={audioRef}
-          src="/music/voice-memo.mp3"       /* <-- your audio file path */
+          src="https://res.cloudinary.com/dr4ompqm4/video/upload/v1754758748/New_Recording_ryjgkv.m4a"       /* <-- your audio file path */
           controls
           className="surprise-audio"
         >

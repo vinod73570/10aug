@@ -4,11 +4,12 @@ import "./RealisticBalloons.css";
 
 // Multiple balloon colors for variety
 const balloonImages = [
-  "/balloon-red.png",
-  "/balloon-blue.png",
-  "/balloon-green.png",
-  "/balloon-yellow.png",
-  "/balloon-pink.png",
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754759198/balloon_wcpgfx.png",
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754759198/balloon_wcpgfx.png",
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754759198/balloon_wcpgfx.png",
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754759198/balloon_wcpgfx.png",
+  "https://res.cloudinary.com/dr4ompqm4/image/upload/v1754759198/balloon_wcpgfx.png",
+  
 ];
 
 let balloonId = 0;

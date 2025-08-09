@@ -7,8 +7,8 @@ import "./CountdownTimer.css";
 const CountdownTimer = () => {
   const navigate = useNavigate(); // ✅ Step 2
 
-  const targetDateRef = useRef(new Date("2025-08-10T00:00:00"));
-  // const targetDateRef = useRef(new Date(Date.now() + 1000)); // ⏱️ For testing
+  // const targetDateRef = useRef(new Date("2025-08-10T00:00:00"));
+  const targetDateRef = useRef(new Date(Date.now() + 9000)); // ⏱️ For testing
 
   const { setShowFireworks } = useContext(CelebrationContext);
   const { playBirthdayNow } = useContext(MusicContext);
