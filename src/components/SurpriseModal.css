@@ -1,14 +1,16 @@
+/* 🌸 Surprise Modal Overlay */
 .surprise-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1100;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 
+/* 🌸 Modal Box */
 .surprise-box {
   position: relative;
   background: #1a1a1a;
@@ -22,21 +24,12 @@
   animation: slideDown 0.4s ease-out forwards;
   color: #fff;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  min-height: 520px; /* prevent layout jump when content appears */
-  overflow: hidden;
+  min-height: 520px;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* 🌸 Close Button */
 .surprise-close {
   position: absolute;
   top: 10px;
@@ -50,17 +43,19 @@
   transition: transform 0.2s ease;
 }
 .surprise-close:hover {
-  transform: rotate(15deg);
+  transform: rotate(15deg) scale(1.1);
 }
 
+/* 🌸 Title */
 .surprise-title {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 20px;
   color: #ffb6e6;
-  text-shadow: 0 0 8px #ff80bf;
+  text-shadow: 0 0 8px #ff80bf, 0 0 12px #fff;
 }
 
+/* 🌸 Audio Player */
 .surprise-audio {
   width: 100%;
   margin-top: 20px;
@@ -71,71 +66,75 @@
   padding: 4px;
 }
 
-/* Optional: Enhance VideoPlayer visuals if it's used here */
+/* 🌸 Video Styling */
 .vp-player video {
   border-radius: 12px;
   box-shadow: 0 0 12px #ff80bf88;
   width: 100%;
-  max-width: 480px;        /* ✅ prevent video from being too large */
-  max-height: 300px;       /* ✅ optional: limit height for smaller screens */
+  max-width: 480px;
+  max-height: 300px;
   display: block;
-  margin: 0 auto;     
-   object-fit: cover;      
+  margin: 0 auto;
+  object-fit: cover;
 }
 .vp-player {
   max-width: 520px;
   margin: 0 auto;
   text-align: center;
 }
-/* Compact mode for SurpriseModal */
-.vp-wrapper.vp-compact .vp-player {
-  max-width: 500px;
-  margin: 0 auto;
+
+/* 🌸 Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.vp-wrapper.vp-compact .vp-video {
-  width: 100%;
-  max-height: 280px;
-  border-radius: 10px;
-  box-shadow: 0 0 12px #ff80bf88;
-}
-.vp-wrapper.vp-compact .vp-player {
-  padding-bottom: 1rem; /* give extra room below video */
-}
-/* ✅ Redmi A2 & small screen optimization */
+/* ✅ Mobile Optimization for 720×1600 */
 @media screen and (max-width: 720px) and (max-height: 1600px) {
   .surprise-box {
-    padding: 20px 16px;
-    max-width: 95%;
-    max-height: 90vh;
+    padding: 18px 14px;
+    max-width: 94%;
+    max-height: 88vh;
     border-radius: 12px;
+    min-height: auto;
   }
 
   .surprise-title {
-    font-size: 1.4rem;
-    margin-bottom: 16px;
-    padding: 0 10px;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    padding: 0 8px;
+    line-height: 1.4;
   }
 
   .surprise-close {
     font-size: 22px;
-    top: 8px;
-    right: 8px;
+    top: 6px;
+    right: 6px;
   }
 
   .surprise-audio {
-    font-size: 0.9rem;
-    margin-top: 16px;
+    font-size: 0.85rem;
+    margin-top: 14px;
   }
 
-  .vp-wrapper.vp-compact .vp-player,
-  .vp-player {
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .vp-wrapper.vp-compact .vp-video,
+  /* Video sizing for small screens */
   .vp-player video {
-    max-height: 220px;
+    max-height: 200px;
+  }
+
+  .vp-wrapper.vp-compact .vp-video {
+    max-height: 200px;
+  }
+
+  /* Make scroll smoother for tall content */
+  .surprise-box {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
